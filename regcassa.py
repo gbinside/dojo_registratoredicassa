@@ -7,12 +7,12 @@ from threading import Thread
 import BaseHTTPServer
 import Tkinter as tk
 import json
-
 try:
     import winsound
 except ImportError:
     pass
 
+TIMEOUT = 1
 HOST = '127.0.0.1'
 PORT = 5000
 
@@ -51,7 +51,7 @@ class HandlerClass(BaseHTTPServer.BaseHTTPRequestHandler):
             s.send_header("Content-type", "application/json")
             s.end_headers()
             try:
-                barcode = queue.get(timeout=2)
+                barcode = queue.get(timeout=TIMEOUT)
                 s.wfile.write(json.dumps({'status': 'OK', 'barcode': barcode}))
                 queue.task_done()
             except Empty:
