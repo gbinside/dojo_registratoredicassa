@@ -36,6 +36,7 @@ class HandlerClass(BaseHTTPServer.BaseHTTPRequestHandler):
                 s.send_header("Content-type", "application/json")
                 s.end_headers()
                 s.wfile.write(json.dumps({'status': 'KO'}))
+                return
 
             s.send_response(200)
             s.send_header("Content-type", "application/json")
@@ -43,6 +44,7 @@ class HandlerClass(BaseHTTPServer.BaseHTTPRequestHandler):
             s.wfile.write(json.dumps({'status': 'OK'}))
         else:
             s.send_response(404)
+            s.end_headers()
 
 
     def do_GET(s):
