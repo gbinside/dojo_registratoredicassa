@@ -15,7 +15,7 @@ You can GET or POST to /
 
     {"status": "Empty"}
 
-* POST: posting a json like the following you will rint that in the top element of the GUI
+* POST: posting a json like the following you will print that in the top element of the GUI
 
     {"display": "0,00"}
 
